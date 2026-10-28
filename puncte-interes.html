@@ -1,56 +1,20 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puncte de Interes (Gherghe)</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puncte de interes – Voyago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <div class="logo">✈️ Travel Planner</div>
-        <nav>
-            <a href="index.html">Acasă & Țări</a>
-            <a href="puncte-interes.html" class="active">Puncte de Interes</a>
-            <a href="buget.html">Calcul Buget</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <section class="card">
-            <h2>Puncte de Interes și Recomandări</h2>
-            <p>Selectează opțiunile dorite pentru a fi incluse în calculul de buget:</p>
-
-            <h3>🏛️ Locații și Atracții Turistice</h3>
-            <div class="options-group">
-                <label><input type="checkbox" class="poi-item" data-category="Turism" data-cost="50" value="Muzee și Galerii de Artă"> Muzee și Galerii de Artă (~50 EUR)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Turism" data-cost="100" value="Tur Ghidat Istoric"> Tur Ghidat Oraș (~100 EUR)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Turism" data-cost="80" value="Parcuri de Distracție"> Parcuri de Distracție (~80 EUR)</label>
-            </div>
-
-            <h3>🍽️ Restaurante și Gastronomie</h3>
-            <div class="options-group">
-                <label><input type="checkbox" class="poi-item" data-category="Mâncare" data-cost="40" value="Street Food Local"> Street Food Local (~40 EUR/zi)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Mâncare" data-cost="120" value="Restaurante Tradiționale"> Restaurante Tradiționale (~120 EUR/zi)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Mâncare" data-cost="250" value="Fine Dining"> Experiențe Fine Dining (~250 EUR)</label>
-            </div>
-
-            <h3>🚌 Opțiuni Transport</h3>
-            <div class="options-group">
-                <label><input type="checkbox" class="poi-item" data-category="Transport" data-cost="30" value="Abonament Transport Public"> Transport Public (Metrou/Bus - ~30 EUR)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Transport" data-cost="150" value="Închiriere Mașină"> Închiriere Auto (~150 EUR)</label>
-                <label><input type="checkbox" class="poi-item" data-category="Transport" data-cost="100" value="Taxi / Ride-Sharing"> Ridesharing / Taxiuri (~100 EUR)</label>
-            </div>
-
-            <button id="save-poi-btn" class="btn" style="margin-top: 20px;">Salvează Selecțiile pentru Buget</button>
-            <div id="poi-status" style="margin-top: 10px; color: green; font-weight: bold;"></div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Travel Planner - Proiect realizat de George, Gherghe și Sima</p>
-    </footer>
-
-    <script src="app.js"></script>
+<body data-page="poi">
+  <div id="nav"></div>
+  <main id="app"></main>
+  <div id="footer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
