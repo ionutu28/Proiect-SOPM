@@ -1,68 +1,18 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculare Buget (Sima)</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buget – Voyago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <div class="logo">✈️ Travel Planner</div>
-        <nav>
-            <a href="index.html">Acasă & Țări</a>
-            <a href="puncte-interes.html">Puncte de Interes</a>
-            <a href="buget.html" class="active">Calcul Buget</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <section class="card">
-            <h2>Calculare Buget Estimativ</h2>
-            
-            <form id="budget-form">
-                <div class="form-group">
-                    <label for="num-days">Număr de zile de vacanță:</label>
-                    <input type="number" id="num-days" min="1" value="5" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="accommodation">Tip Cazare (pe noapte):</label>
-                    <select id="accommodation">
-                        <option value="30">Hostel / Buget redus (30 EUR/noapte)</option>
-                        <option value="80" selected>Hotel 3 stele (80 EUR/noapte)</option>
-                        <option value="180">Hotel 5 stele / Resort (180 EUR/noapte)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="flight-cost">Cost Bilet Avion / Transport principal (EUR):</label>
-                    <input type="number" id="flight-cost" value="150" min="0">
-                </div>
-
-                <button type="button" id="calc-budget-btn" class="btn">Calculează Buget Total</button>
-            </form>
-        </section>
-
-        <!-- Rezultat Calcul Buget -->
-        <section class="card">
-            <h3>Sumar Buget Vacanță</h3>
-            <div id="selected-destination"><strong>Destinație aleasă:</strong> <span id="dest-name">Nicio țară selectată</span></div>
-            <p><strong>Puncte de interes & Opțiuni selectate:</strong></p>
-            <ul id="selected-poi-list">
-                <li>Nu a fost selectat niciun punct de interes.</li>
-            </ul>
-
-            <div class="total-box">
-                Total Estimat: <span id="total-amount">0</span> EUR
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Travel Planner - Proiect realizat de George, Gherghe și Sima</p>
-    </footer>
-
-    <script src="app.js"></script>
+<body data-page="budget">
+  <div id="nav"></div>
+  <main id="app"></main>
+  <div id="footer"></div>
+  <script src="app.js"></script>
 </body>
 </html>
