@@ -1,55 +1,105 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Planner - Index (George)</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voyago – planifică-ți călătoria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <div class="logo">✈️ Travel Planner</div>
-        <nav>
-            <a href="index.html" class="active">Acasă & Țări</a>
-            <a href="puncte-interes.html">Puncte de Interes</a>
-            <a href="buget.html">Calcul Buget</a>
-        </nav>
-    </header>
+<body data-page="home">
+  <div id="nav"></div>
+  <main>
+    <section class="hero3"><div class="wrap hero3-in">
+      <div>
+        <span class="kicker">Planificator de călătorii</span>
+        <h1>Vacanța ta, <em>calculată</em> până la ultimul leu.</h1>
+        <p class="lead">Alegi țara, bifezi ce vrei să vezi și să mănânci, iar noi îți spunem cât costă. Apoi confirmi rezervarea direct de aici.</p>
+        <a class="btn" href="#destinatii">Vezi destinațiile</a>
+        <div class="stats"><div><b>10</b><span>destinații</span></div><div><b>3</b><span>metode de plată</span></div><div><b>0 €</b><span>cont gratuit</span></div></div>
+      </div>
 
-    <main class="container">
-        <!-- Secțiunea Creare Cont / Autentificare -->
-        <section class="card" id="auth-section">
-            <h2>Creare Cont / Autentificare</h2>
-            <form id="auth-form">
-                <div class="form-group">
-                    <label for="username">Nume utilizator:</label>
-                    <input type="text" id="username" required placeholder="Introduceți numele">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required placeholder="exemplu@email.com">
-                </div>
-                <button type="submit" class="btn">Creează Cont</button>
-            </form>
-            <div id="user-welcome" class="hidden">
-                <h3>Bine ai venit, <span id="display-user"></span>!</h3>
-                <button id="logout-btn" class="btn btn-secondary">Deconectare</button>
-            </div>
-        </section>
+      <form class="planner" id="sf">
+        <h2>Planifică o călătorie</h2>
+        <div class="seg" role="tablist">
+          <button type="button" data-stab="flight" class="on">✈️ Zbor</button>
+          <button type="button" data-stab="hotel">🏨 Cazare</button>
+          <button type="button" data-stab="car">🚗 Mașină</button>
+        </div>
+        <div class="trip">
+          <label><input type="radio" name="trip" value="rt" checked> Dus-întors</label>
+          <label><input type="radio" name="trip" value="ow"> Dus</label>
+        </div>
+        <div class="pgrid">
+          <label class="sf full" id="wFrom">Orașul de plecare<input name="from" value="București"></label>
+          <label class="sf full">Destinația<select name="dest"></select></label>
+          <label class="sf"><span id="l1">Plecare</span><input type="date" name="d1" required></label>
+          <label class="sf" id="w2"><span id="l2">Întoarcere</span><input type="date" name="d2"></label>
+          <label class="sf full">Pasageri<select name="pax"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+        </div>
+        <div class="srow2"><button type="button" class="link" id="promoBtn">Ai un cod promoțional?</button><input name="promo" id="promoBox" placeholder="VOYAGO10" aria-label="Cod promoțional" hidden></div>
+        <button class="btn lime" type="submit">Începe planificarea &rsaquo;</button>
+      </form>
+    </div></section>
 
-        <!-- Secțiunea API 10 Țări -->
-        <section class="card">
-            <h2>Alegere Locație (Top 10 Destinații API)</h2>
-            <p>Selectează o țară din listă pentru a-ți planifica călătoria:</p>
-            <div id="loading">Se încarcă datele din API...</div>
-            <div id="countries-grid" class="grid-container"></div>
-        </section>
-    </main>
+    <section class="section" style="padding-top:24px"><div class="wrap">
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:28px">Patru pași până la plecare</h2>
+      <div class="how">
+        <div><b>1</b><h3>Creezi un cont</h3><p>Gratuit, în câteva secunde.</p></div>
+        <div><b>2</b><h3>Alegi destinația</h3><p>Una din cele 10 țări populare.</p></div>
+        <div><b>3</b><h3>Bifezi și calculezi</h3><p>Atracții, mâncare, transport și buget.</p></div>
+        <div><b>4</b><h3>Confirmi și plătești</h3><p>Card, PayPal sau transfer bancar.</p></div>
+      </div>
+    </div></section>
 
-    <footer>
-        <p>&copy; 2026 Travel Planner - Proiect realizat de George, Gherghe și Sima</p>
-    </footer>
+    <section class="section alt" id="destinatii"><div class="wrap">
+      <div class="head">
+        <div><h2>10 destinații populare</h2><p class="muted">Date din REST Countries. Alege țara în care vrei să mergi.</p></div>
+        <input class="search" id="q" type="search" placeholder="Caută o țară…" aria-label="Caută o țară">
+      </div>
+      <div class="grid" id="countries"></div>
+    </div></section>
 
-    <script src="app.js"></script>
+    <section class="section"><div class="wrap"><div class="band">
+      <h2>Prima ta vacanță planificată începe cu un cont.</h2>
+      <button class="btn" type="button" data-open-auth="register">Creează cont gratuit</button>
+    </div></div></section>
+
+    <section class="section alt" id="faq"><div class="wrap" style="max-width:820px">
+      <h2 style="margin-bottom:24px">Întrebări frecvente</h2>
+      <details><summary>Cum funcționează Voyago?</summary><p>Îți faci un cont, alegi o țară, bifezi atracții, restaurante și transport, vezi bugetul și apoi confirmi și plătești rezervarea.</p></details>
+      <details><summary>Plata este reală?</summary><p>Nu. Este o simulare pentru proiect: niciun card nu este încărcat, iar numărul cardului nu se salvează, doar ultimele 4 cifre.</p></details>
+      <details><summary>Unde se salvează contul și rezervările?</summary><p>Totul rămâne în browserul tău (localStorage). Nu se trimite nimic către un server.</p></details>
+      <details><summary>Cum folosesc codul promoțional?</summary><p>Scrie VOYAGO10 în formularul de planificare. Primești 10% reducere la biletele de avion din buget.</p></details>
+      <details><summary>Cum vă pot contacta?</summary><p>Scrie-ne la <a href="mailto:contact@voyago.example" style="color:var(--coral);font-weight:700">contact@voyago.example</a>.</p></details>
+    </div></section>
+  </main>
+  <div id="footer"></div>
+
+  <dialog id="authDlg">
+    <button class="close" aria-label="Închide">&times;</button>
+    <h2 style="font-size:1.8rem">Bine ai venit</h2>
+    <p class="muted" id="authNote"></p>
+    <div class="tabs" role="tablist">
+      <button type="button" data-tab="login" class="on">Autentificare</button>
+      <button type="button" data-tab="register">Cont nou</button>
+    </div>
+    <form data-form="login">
+      <label class="field">Email<input type="email" name="email" required autocomplete="email"></label>
+      <label class="field">Parolă<input type="password" name="pass" required autocomplete="current-password"></label>
+      <p class="err" role="alert"></p>
+      <button class="btn" type="submit">Intră în cont</button>
+    </form>
+    <form data-form="register" hidden>
+      <label class="field">Nume complet<input type="text" name="name" required autocomplete="name"></label>
+      <label class="field">Email<input type="email" name="email" required autocomplete="email"></label>
+      <label class="field">Parolă (minimum 6 caractere)<input type="password" name="pass" required minlength="6" autocomplete="new-password"></label>
+      <p class="err" role="alert"></p>
+      <button class="btn" type="submit">Creează contul</button>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
 </body>
 </html>
